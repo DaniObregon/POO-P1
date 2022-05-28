@@ -23,6 +23,7 @@ namespace _1erParcial_POO_Obregon
         VistaCuota vistaCuota;
         VistaBeca vistaBeca;
 
+        Universidad universidad;
         Alumno alumno;
         Cuota cuota;
         Beca beca;
@@ -45,7 +46,11 @@ namespace _1erParcial_POO_Obregon
 
         private void btnAgregarAlumno_Click(object sender, EventArgs e)
         {
-            agregarAlumno();
+
+            if()
+
+
+            //agregarAlumno();
         }
 
         private Alumno devuelveAlumnoSeleccionado()
@@ -605,5 +610,6 @@ namespace _1erParcial_POO_Obregon
         {
 
         }
+
     }
 }

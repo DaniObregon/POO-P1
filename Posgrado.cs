@@ -10,10 +10,17 @@ namespace _1erParcial_POO_Obregon
     {
         public Posgrado()
         {
+            AsociarBeneficio();
         }
 
-        public Posgrado(string legajo, string nombre, string apellido, string dNI, int grupo, double valorCuota) : base(legajo, nombre, apellido, dNI, grupo, valorCuota)
+        public Posgrado(string legajo, string nombre, string apellido, string dNI, double valorCuota) : base(legajo, nombre, apellido, dNI)
         {
+            AsociarBeneficio();
+        }
+
+        protected override void AsociarBeneficio(Beneficio beneficio = null)//Quiere decir que si no le pasan parametro,por defecto sera null
+        {
+            beneficioOtorgado = beneficio == null ? new BeneficioC() : beneficio;
         }
     }
 }
