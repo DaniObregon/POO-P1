@@ -13,20 +13,18 @@ namespace _1erParcial_POO_Obregon
         public string Mes { get; set; }
         public string Anho { get; set; }
         public DateTime FechaPago { get; set; }
-        public Alumno Alumno { get; set; }
 
         public Cuota()
         {
         }
 
-        public Cuota(string id, double importe, string mes, string anho, DateTime fechaPago, Alumno alumno)
+        public Cuota(string id, double importe, string mes, string anho, DateTime fechaPago)
         {
             Id = id;
             Importe = importe;
             Mes = mes;
             Anho = anho;
             FechaPago = fechaPago;
-            Alumno = alumno;
         }
 
         public double calcularCuota()

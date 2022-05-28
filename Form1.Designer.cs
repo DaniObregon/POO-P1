@@ -33,7 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dgvBecas = new System.Windows.Forms.DataGridView();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.nUpDownGrupo = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
@@ -44,7 +43,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnAgregarAlumno = new System.Windows.Forms.Button();
             this.btnEliminarAlumno = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -76,11 +74,17 @@
             this.btnEliminarBeca = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.txtValorCuota = new System.Windows.Forms.TextBox();
+            this.nUpDownGrupo = new System.Windows.Forms.NumericUpDown();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbPosgrado = new System.Windows.Forms.RadioButton();
+            this.rbGrado = new System.Windows.Forms.RadioButton();
+            this.rbIngresante = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumno)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBecas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUpDownGrupo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnoSeleccionado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuotasPagas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUpDownGrupo)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvAlumno
@@ -93,7 +97,7 @@
             this.dgvAlumno.RowHeadersWidth = 51;
             this.dgvAlumno.RowTemplate.Height = 24;
             this.dgvAlumno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAlumno.Size = new System.Drawing.Size(460, 221);
+            this.dgvAlumno.Size = new System.Drawing.Size(460, 181);
             this.dgvAlumno.TabIndex = 38;
             this.dgvAlumno.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAlumno_CellMouseClick);
             // 
@@ -134,28 +138,6 @@
             this.txtNombre.Size = new System.Drawing.Size(100, 22);
             this.txtNombre.TabIndex = 1;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
-            // 
-            // nUpDownGrupo
-            // 
-            this.nUpDownGrupo.Location = new System.Drawing.Point(515, 282);
-            this.nUpDownGrupo.Maximum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.nUpDownGrupo.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nUpDownGrupo.Name = "nUpDownGrupo";
-            this.nUpDownGrupo.Size = new System.Drawing.Size(100, 22);
-            this.nUpDownGrupo.TabIndex = 4;
-            this.nUpDownGrupo.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label3
             // 
@@ -228,7 +210,7 @@
             // 
             // btnAgregarAlumno
             // 
-            this.btnAgregarAlumno.Location = new System.Drawing.Point(39, 322);
+            this.btnAgregarAlumno.Location = new System.Drawing.Point(39, 338);
             this.btnAgregarAlumno.Name = "btnAgregarAlumno";
             this.btnAgregarAlumno.Size = new System.Drawing.Size(126, 39);
             this.btnAgregarAlumno.TabIndex = 6;
@@ -238,23 +220,13 @@
             // 
             // btnEliminarAlumno
             // 
-            this.btnEliminarAlumno.Location = new System.Drawing.Point(191, 322);
+            this.btnEliminarAlumno.Location = new System.Drawing.Point(191, 338);
             this.btnEliminarAlumno.Name = "btnEliminarAlumno";
             this.btnEliminarAlumno.Size = new System.Drawing.Size(126, 39);
             this.btnEliminarAlumno.TabIndex = 18;
             this.btnEliminarAlumno.Text = "Eliminar Alumno";
             this.btnEliminarAlumno.UseVisualStyleBackColor = true;
             this.btnEliminarAlumno.Click += new System.EventHandler(this.btnEliminarAlumno_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label8.Location = new System.Drawing.Point(31, 294);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(261, 16);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "*Grupo:  1 Ingresante  2 Grado  3 Posgrado";
             // 
             // label9
             // 
@@ -313,13 +285,13 @@
             this.codigo,
             this.fechaOtorgamiento,
             this.importe});
-            this.dgvAlumnoSeleccionado.Location = new System.Drawing.Point(36, 422);
+            this.dgvAlumnoSeleccionado.Location = new System.Drawing.Point(24, 422);
             this.dgvAlumnoSeleccionado.MultiSelect = false;
             this.dgvAlumnoSeleccionado.Name = "dgvAlumnoSeleccionado";
             this.dgvAlumnoSeleccionado.RowHeadersWidth = 51;
             this.dgvAlumnoSeleccionado.RowTemplate.Height = 24;
             this.dgvAlumnoSeleccionado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAlumnoSeleccionado.Size = new System.Drawing.Size(331, 253);
+            this.dgvAlumnoSeleccionado.Size = new System.Drawing.Size(334, 253);
             this.dgvAlumnoSeleccionado.TabIndex = 39;
             // 
             // codigo
@@ -455,13 +427,13 @@
             // 
             this.dgvCuotasPagas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCuotasPagas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCuotasPagas.Location = new System.Drawing.Point(430, 422);
+            this.dgvCuotasPagas.Location = new System.Drawing.Point(401, 422);
             this.dgvCuotasPagas.MultiSelect = false;
             this.dgvCuotasPagas.Name = "dgvCuotasPagas";
             this.dgvCuotasPagas.RowHeadersWidth = 51;
             this.dgvCuotasPagas.RowTemplate.Height = 24;
             this.dgvCuotasPagas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCuotasPagas.Size = new System.Drawing.Size(737, 251);
+            this.dgvCuotasPagas.Size = new System.Drawing.Size(766, 251);
             this.dgvCuotasPagas.TabIndex = 57;
             // 
             // label19
@@ -485,7 +457,7 @@
             // 
             // btnModificarAlumno
             // 
-            this.btnModificarAlumno.Location = new System.Drawing.Point(337, 322);
+            this.btnModificarAlumno.Location = new System.Drawing.Point(337, 338);
             this.btnModificarAlumno.Name = "btnModificarAlumno";
             this.btnModificarAlumno.Size = new System.Drawing.Size(126, 39);
             this.btnModificarAlumno.TabIndex = 67;
@@ -530,11 +502,79 @@
             this.txtValorCuota.TabIndex = 70;
             this.txtValorCuota.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorCuota_KeyPress);
             // 
+            // nUpDownGrupo
+            // 
+            this.nUpDownGrupo.Location = new System.Drawing.Point(515, 282);
+            this.nUpDownGrupo.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.nUpDownGrupo.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nUpDownGrupo.Name = "nUpDownGrupo";
+            this.nUpDownGrupo.Size = new System.Drawing.Size(100, 22);
+            this.nUpDownGrupo.TabIndex = 4;
+            this.nUpDownGrupo.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbPosgrado);
+            this.groupBox1.Controls.Add(this.rbGrado);
+            this.groupBox1.Controls.Add(this.rbIngresante);
+            this.groupBox1.Location = new System.Drawing.Point(24, 257);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(320, 67);
+            this.groupBox1.TabIndex = 72;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Grupo";
+            // 
+            // rbPosgrado
+            // 
+            this.rbPosgrado.AutoSize = true;
+            this.rbPosgrado.Location = new System.Drawing.Point(199, 27);
+            this.rbPosgrado.Name = "rbPosgrado";
+            this.rbPosgrado.Size = new System.Drawing.Size(88, 20);
+            this.rbPosgrado.TabIndex = 2;
+            this.rbPosgrado.TabStop = true;
+            this.rbPosgrado.Text = "Posgrado";
+            this.rbPosgrado.UseVisualStyleBackColor = true;
+            // 
+            // rbGrado
+            // 
+            this.rbGrado.AutoSize = true;
+            this.rbGrado.Location = new System.Drawing.Point(112, 27);
+            this.rbGrado.Name = "rbGrado";
+            this.rbGrado.Size = new System.Drawing.Size(66, 20);
+            this.rbGrado.TabIndex = 1;
+            this.rbGrado.TabStop = true;
+            this.rbGrado.Text = "Grado";
+            this.rbGrado.UseVisualStyleBackColor = true;
+            // 
+            // rbIngresante
+            // 
+            this.rbIngresante.AutoSize = true;
+            this.rbIngresante.Location = new System.Drawing.Point(6, 27);
+            this.rbIngresante.Name = "rbIngresante";
+            this.rbIngresante.Size = new System.Drawing.Size(91, 20);
+            this.rbIngresante.TabIndex = 0;
+            this.rbIngresante.TabStop = true;
+            this.rbIngresante.Text = "Ingresante";
+            this.rbIngresante.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1333, 745);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.txtValorCuota);
             this.Controls.Add(this.btnEliminarBeca);
@@ -563,7 +603,6 @@
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtBeneficiario);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnEliminarAlumno);
             this.Controls.Add(this.btnAgregarAlumno);
             this.Controls.Add(this.label7);
@@ -585,9 +624,11 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumno)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBecas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUpDownGrupo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnoSeleccionado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuotasPagas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUpDownGrupo)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -597,7 +638,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.NumericUpDown nUpDownGrupo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtApellido;
@@ -608,7 +648,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnAgregarAlumno;
         private System.Windows.Forms.Button btnEliminarAlumno;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label10;
@@ -642,6 +681,11 @@
         private System.Windows.Forms.Button btnEliminarBeca;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtValorCuota;
+        private System.Windows.Forms.NumericUpDown nUpDownGrupo;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbPosgrado;
+        private System.Windows.Forms.RadioButton rbGrado;
+        private System.Windows.Forms.RadioButton rbIngresante;
     }
 }
 
