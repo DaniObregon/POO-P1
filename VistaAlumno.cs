@@ -12,7 +12,6 @@ namespace _1erParcial_POO_Obregon
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string DNI { get; set; }
-        public int Grupo { get; set; }
 
         private Alumno _retornaAlumnoOriginal;
 
@@ -23,13 +22,12 @@ namespace _1erParcial_POO_Obregon
 
         public VistaAlumno() { }
 
-        public VistaAlumno(string legajo, string nombre, string apellido, string dNI, int grupo, Alumno alumno)
+        public VistaAlumno(string legajo, string nombre, string apellido, string dNI, Alumno alumno)
         {
             Legajo = legajo;
             Nombre = nombre;
             Apellido = apellido;
             DNI = dNI;
-            Grupo = grupo;
             _retornaAlumnoOriginal = alumno;
         }
 
@@ -43,7 +41,6 @@ namespace _1erParcial_POO_Obregon
                     alumno.Nombre, 
                     alumno.Apellido, 
                     alumno.DNI, 
-                    alumno.Grupo, 
                     alumno));
             }
             return vistaAlumnoLista;

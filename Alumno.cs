@@ -51,7 +51,7 @@ namespace _1erParcial_POO_Obregon
             this.ListaBecas.Remove(beca);
         }
 
-        public List<Beca> retornaBecas()
+        public List<Beca> retornaBecasAlumno()
         {
             return ListaBecas;
         }

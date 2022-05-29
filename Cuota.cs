@@ -27,13 +27,13 @@ namespace _1erParcial_POO_Obregon
             FechaPago = fechaPago;
         }
 
-        public double calcularCuota()
+        /*public double calcularCuota()
         {
             double netoPagar = this.Importe;
             netoPagar -= Alumno.sumatoriaBecas();
             netoPagar -= netoPagar * Alumno.beneficio();
 
             return netoPagar;
-        }
+        }*/
     }
 }

@@ -99,7 +99,7 @@
             this.dgvAlumno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAlumno.Size = new System.Drawing.Size(460, 181);
             this.dgvAlumno.TabIndex = 38;
-            this.dgvAlumno.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAlumno_CellMouseClick);
+            //this.dgvAlumno.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAlumno_CellMouseClick);
             // 
             // label1
             // 
@@ -226,7 +226,7 @@
             this.btnEliminarAlumno.TabIndex = 18;
             this.btnEliminarAlumno.Text = "Eliminar Alumno";
             this.btnEliminarAlumno.UseVisualStyleBackColor = true;
-            this.btnEliminarAlumno.Click += new System.EventHandler(this.btnEliminarAlumno_Click);
+           //this.btnEliminarAlumno.Click += new System.EventHandler(this.btnEliminarAlumno_Click);
             // 
             // label9
             // 
@@ -275,7 +275,7 @@
             this.btnAsignarBecaAlumno.TabIndex = 26;
             this.btnAsignarBecaAlumno.Text = "Asignar beca";
             this.btnAsignarBecaAlumno.UseVisualStyleBackColor = true;
-            this.btnAsignarBecaAlumno.Click += new System.EventHandler(this.btnAsignarBeca_Click);
+            //this.btnAsignarBecaAlumno.Click += new System.EventHandler(this.btnAsignarBeca_Click);
             // 
             // dgvAlumnoSeleccionado
             // 
@@ -340,7 +340,7 @@
             this.btnPagarCuota.TabIndex = 48;
             this.btnPagarCuota.Text = "Pagar cuota";
             this.btnPagarCuota.UseVisualStyleBackColor = true;
-            this.btnPagarCuota.Click += new System.EventHandler(this.btnPagarCuota_Click);
+            //this.btnPagarCuota.Click += new System.EventHandler(this.btnPagarCuota_Click);
             // 
             // label13
             // 
@@ -463,7 +463,7 @@
             this.btnModificarAlumno.TabIndex = 67;
             this.btnModificarAlumno.Text = "Modificar Alumno";
             this.btnModificarAlumno.UseVisualStyleBackColor = true;
-            this.btnModificarAlumno.Click += new System.EventHandler(this.btnModificarAlumno_Click);
+            //this.btnModificarAlumno.Click += new System.EventHandler(this.btnModificarAlumno_Click);
             // 
             // btnQuitarBecaAlumno
             // 
@@ -473,7 +473,7 @@
             this.btnQuitarBecaAlumno.TabIndex = 68;
             this.btnQuitarBecaAlumno.Text = "Rescindir beca";
             this.btnQuitarBecaAlumno.UseVisualStyleBackColor = true;
-            this.btnQuitarBecaAlumno.Click += new System.EventHandler(this.btnQuitarBecaAlumno_Click);
+            //this.btnQuitarBecaAlumno.Click += new System.EventHandler(this.btnQuitarBecaAlumno_Click);
             // 
             // btnEliminarBeca
             // 

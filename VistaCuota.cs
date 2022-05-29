@@ -40,7 +40,7 @@ namespace _1erParcial_POO_Obregon
         {
         }
 
-        public List<VistaCuota> retornaListaCuotasVista(List<Cuota> listaCuotas)
+        /*public List<VistaCuota> retornaListaCuotasVista(List<Cuota> listaCuotas)
         {
             List<VistaCuota> vistaCuotaLista = new List<VistaCuota>();
 
@@ -55,6 +55,6 @@ namespace _1erParcial_POO_Obregon
                     cuota.calcularCuota()));
             }
             return vistaCuotaLista;
-        }
+        }*/
     }
 }
