@@ -15,7 +15,7 @@ namespace _1erParcial_POO_Obregon
     public partial class Form1 : Form
     {
 
-        List<Alumno> listaAlumnos;
+        //List<Alumno> listaAlumnos;
         List<Cuota> listaCuotas;
         List<Beca> listaBecas;
 
@@ -39,18 +39,15 @@ namespace _1erParcial_POO_Obregon
 
             listaCuotas = new List<Cuota>();
             listaBecas = new List<Beca>();
-            listaAlumnos = new List<Alumno>();
+            universidad = new Universidad();
 
         }
 
 
         private void btnAgregarAlumno_Click(object sender, EventArgs e)
         {
-
-            if()
-
-
-            //agregarAlumno();
+            universidad.agregarAlumnoAUniversidad(agregarAlumnoNuevo());
+            agregarAlumnoaDGV(universidad.retornarListaAlumnosUniversidad());
         }
 
         private Alumno devuelveAlumnoSeleccionado()
@@ -58,7 +55,7 @@ namespace _1erParcial_POO_Obregon
             return dgvAlumno.SelectedRows[0].DataBoundItem as Alumno;
         }
 
-        private void btnModificarAlumno_Click(object sender, EventArgs e)
+        /*private void btnModificarAlumno_Click(object sender, EventArgs e)
         {
             foreach (Alumno alumno in listaAlumnos)
             {
@@ -91,37 +88,47 @@ namespace _1erParcial_POO_Obregon
                     }
                 }
             }
-        }
+        }*/
 
-        public void agregarAlumno()
+        public Alumno agregarAlumnoNuevo()
         {
-            if (verificarCamposAlumno())
+            try
             {
-                if (legajoExistente())
+                if (verificarCamposAlumno())
                 {
-                    MessageBox.Show("Legajo existente en la lista de alumnos.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (legajoExistente())
+                    {
+                        MessageBox.Show("Legajo existente en la lista de alumnos.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        throw new Exception("Legajo existente en la lista de alumnos.");
+                    }
+                    else
+                    {
+                        if (rbIngresante.Checked) alumno = new Ingresante();
+                        if (rbGrado.Checked) alumno = new Grado();
+                        if (rbPosgrado.Checked) alumno = new Posgrado();
+
+                        alumno.Legajo = txtLegajo.Text;
+                        alumno.Nombre = txtNombre.Text;
+                        alumno.Apellido = txtApellido.Text;
+                        alumno.DNI = txtDNI.Text;
+
+                        
+                    }
                 }
                 else
                 {
-                    alumno = new Alumno();
-                    alumno.Legajo = txtLegajo.Text;
-                    alumno.Nombre = txtNombre.Text;
-                    alumno.Apellido = txtApellido.Text;
-                    alumno.DNI = txtDNI.Text;
-                    alumno.Grupo = (int)nUpDownGrupo.Value;
-                    alumno.ValorCuota = Convert.ToDouble(txtValorCuota.Text);
-
-                    listaAlumnos.Add(alumno);
-                    agregarAlumnoaDGV();
+                    MessageBox.Show("Todos los campos son obligatorios para agregar un alumno", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    throw new Exception("Todos los campos son obligatorios para agregar un alumno");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Todos los campos son obligatorios para agregar un alumno", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message);
             }
+            return alumno;
         }
 
-        public void modificarAlumno(Alumno alumno)
+        /*public void modificarAlumno(Alumno alumno)
         {
             DialogResult result = MessageBox.Show("Realmente desea modificar el alumno seleccionado?",
                                 "titulo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -136,9 +143,9 @@ namespace _1erParcial_POO_Obregon
 
                 agregarAlumnoaDGV();
             }
-        }
+        }*/
 
-        private void btnEliminarAlumno_Click(object sender, EventArgs e)
+        /*private void btnEliminarAlumno_Click(object sender, EventArgs e)
         {
             if (dgvAlumno.CurrentRow == null)
             {
@@ -163,9 +170,9 @@ namespace _1erParcial_POO_Obregon
                     }
                 }
             }
-        }
+        }*/
 
-        private void btnPagarCuota_Click(object sender, EventArgs e)
+        /*private void btnPagarCuota_Click(object sender, EventArgs e)
         {
             if (!verificarCamposCuota())
             {
@@ -226,7 +233,7 @@ namespace _1erParcial_POO_Obregon
                     }
                 }
             }
-        }
+        }*/
 
 
         private void btnAgregarBeca_Click(object sender, EventArgs e)
@@ -292,7 +299,7 @@ namespace _1erParcial_POO_Obregon
             }
         }
 
-        private void btnAsignarBeca_Click(object sender, EventArgs e)
+        /*private void btnAsignarBeca_Click(object sender, EventArgs e)
         {
             foreach (Alumno alumno in listaAlumnos)
             {
@@ -342,15 +349,15 @@ namespace _1erParcial_POO_Obregon
                     }
                 }
             }
-        }
+        }*/
 
-        private void btnQuitarBecaAlumno_Click(object sender, EventArgs e)
+        /*private void btnQuitarBecaAlumno_Click(object sender, EventArgs e)
         {
             foreach (Alumno alumno in listaAlumnos)
             {
                 if (alumno.Legajo == Convert.ToString(this.dgvAlumno.CurrentRow.Cells[0].Value))
                 {
-                    foreach (Beca beca in alumno.retornaBecas())
+                    foreach (Beca beca in alumno.retornaBecasAlumno())
                     {
                         if (beca.Codigo == this.dgvAlumnoSeleccionado.CurrentRow.Cells[0].Value)
                         {
@@ -364,16 +371,15 @@ namespace _1erParcial_POO_Obregon
                                 MessageBox.Show("Has rescindido la beca de " + alumno.Apellido,
                                 "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 break;
-                                /*La funcion break esta porque una vez que se modifica 
-                                 un elemento de una lista no se puede seguir recorriendo*/
+                                //La funcion break esta porque una vez que se modifica un elemento de una lista no se puede seguir recorriendo
                             }
                         }
                     }
                 }
             }
-        }
+        }*/
 
-        private void dgvAlumno_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        /*private void dgvAlumno_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             dgvAlumnoSeleccionado.Rows.Clear();
 
@@ -390,13 +396,13 @@ namespace _1erParcial_POO_Obregon
                     txtBeneficiario.Text = alumno.Apellido;
 
                     //agregar becas del alumno seleccionado
-                    foreach (Beca beca in alumno.retornaBecas())
+                    foreach (Beca beca in alumno.retornaBecasAlumno())
                     {
                         dgvAlumnoSeleccionado.Rows.Add(beca.Codigo, beca.Fecha_Otorgamiento, beca.ImporteBeca);
                     }
                 }
             }
-        }
+        }*/
 
         //CONSTRUCCION DE DGV
         private void construirDGVAlumno()
@@ -445,10 +451,10 @@ namespace _1erParcial_POO_Obregon
         }
 
         //AGREGAR A DGV
-        public void agregarAlumnoaDGV()
+        public void agregarAlumnoaDGV(List<Alumno> alumnos)
         {
             dgvAlumno.DataSource = null;
-            dgvAlumno.DataSource = vistaAlumno.retornaListaAlumnosVista(listaAlumnos);
+            dgvAlumno.DataSource = vistaAlumno.retornaListaAlumnosVista(alumnos);
             construirDGVAlumno();
         }
         public void agregarBecaaDGV()
@@ -460,7 +466,7 @@ namespace _1erParcial_POO_Obregon
         private void agregarCuotaaDGV()
         {
             dgvCuotasPagas.DataSource = null;
-            dgvCuotasPagas.DataSource = vistaCuota.retornaListaCuotasVista(listaCuotas);
+            //dgvCuotasPagas.DataSource = vistaCuota.retornaListaCuotasVista(listaCuotas);
             construirDGVCuotasPagas();
         }
 
@@ -472,13 +478,13 @@ namespace _1erParcial_POO_Obregon
             if (String.IsNullOrEmpty(txtLegajo.Text) ||
                 String.IsNullOrEmpty(txtNombre.Text) ||
                 String.IsNullOrEmpty(txtApellido.Text) ||
-                String.IsNullOrEmpty(txtDNI.Text) ||
-                String.IsNullOrEmpty(txtValorCuota.Text))
+                String.IsNullOrEmpty(txtDNI.Text))
             {
                 camposCompletos = false;
             }
             return camposCompletos;
         }
+
         private bool verificarCamposBeca()
         {
             bool camposCompletos = true;
@@ -490,6 +496,7 @@ namespace _1erParcial_POO_Obregon
             }
             return camposCompletos;
         }
+
         private bool verificarCamposCuota()
         {
             bool camposCompletos = true;
@@ -502,19 +509,23 @@ namespace _1erParcial_POO_Obregon
             }
             return camposCompletos;
         }
+
         private bool legajoExistente()
         {
             bool legajoExistente = false;
 
-            foreach (Alumno alumno in listaAlumnos)
+            List<Alumno> listaAlumnosAux = universidad.retornarListaAlumnosUniversidad();
+            
+            if(listaAlumnosAux.Count != 0)
             {
-                if (String.Equals(alumno.Legajo, txtLegajo.Text))
+                if (listaAlumnosAux.Exists(x => x.Legajo == txtLegajo.Text))
                 {
                     legajoExistente = true;
                 }
             }
             return legajoExistente;
         }
+
         private bool verificarIdCuota()
         {
             bool idCuotaExistente = false;

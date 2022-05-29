@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _1erParcial_POO_Obregon
 {
-    public abstract class Universidad
+    public class Universidad
     {
         List<Alumno> listaAlumnos;
         List<Beca> listaBecas;
@@ -17,13 +17,28 @@ namespace _1erParcial_POO_Obregon
             listaBecas = new List<Beca>();
         }
 
-        public void agregarAlumno(Alumno alumno)
+        public void agregarAlumnoAUniversidad(Alumno alumno)
         {
             listaAlumnos.Add(alumno);
         }
-        public void eliminarAlumno(Alumno alumno)
+
+        public void agregarBeca(Beca beca)
         {
-            //ELIMINAR ALUMNO
+            listaBecas.Add(beca);
+        }
+
+        public List<Beca> retornaListaBecas()
+        {
+            return this.listaBecas;
+        }
+
+        public List<Alumno> retornarListaAlumnosUniversidad()
+        {
+            return this.listaAlumnos;
+        }
+        public void eliminarAlumnoDeUniversidad(Alumno alumno)
+        {
+            //DESARROLLAR ELIMINAR ALUMNO
         }
     }
 }
