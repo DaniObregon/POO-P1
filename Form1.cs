@@ -482,7 +482,6 @@ namespace _1erParcial_POO_Obregon
         {
             dgvAlumno.DataSource = null;
             dgvAlumno.DataSource = alumnos;
-            ///ajjajajajjajajaj
         }
         public void agregarBecaaDGV()
         {
