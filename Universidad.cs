@@ -38,6 +38,15 @@ namespace _1erParcial_POO_Obregon
         }
         public void eliminarAlumnoDeUniversidad(Alumno alumno)
         {
+            try
+            {
+                this.listaAlumnos.Remove(alumno);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
             //DESARROLLAR ELIMINAR ALUMNO
         }
     }

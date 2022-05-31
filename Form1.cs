@@ -46,8 +46,14 @@ namespace _1erParcial_POO_Obregon
 
         private void btnAgregarAlumno_Click(object sender, EventArgs e)
         {
-            universidad.agregarAlumnoAUniversidad(agregarAlumnoNuevo());
-            agregarAlumnoaDGV(universidad.retornarListaAlumnosUniversidad());
+            
+            agregarAlumnoNuevo();
+
+            if (alumno != null)
+            {
+                universidad.agregarAlumnoAUniversidad(alumno);
+                agregarListaAlumnoaDGV(universidad.retornarListaAlumnosUniversidad());
+            }
         }
 
         private Alumno devuelveAlumnoSeleccionado()
@@ -98,8 +104,9 @@ namespace _1erParcial_POO_Obregon
                 {
                     if (legajoExistente())
                     {
-                        MessageBox.Show("Legajo existente en la lista de alumnos.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        throw new Exception("Legajo existente en la lista de alumnos.");
+                        alumno = null;
+                        //MessageBox.Show("Legajo existente en la lista de alumnos.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        throw new Exception("Legajo existente en la lista de alumnos." );
                     }
                     else
                     {
@@ -111,13 +118,12 @@ namespace _1erParcial_POO_Obregon
                         alumno.Nombre = txtNombre.Text;
                         alumno.Apellido = txtApellido.Text;
                         alumno.DNI = txtDNI.Text;
-
-                        
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Todos los campos son obligatorios para agregar un alumno", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    alumno = null;
+                    //MessageBox.Show("Todos los campos son obligatorios para agregar un alumno", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     throw new Exception("Todos los campos son obligatorios para agregar un alumno");
                 }
             }
@@ -145,8 +151,29 @@ namespace _1erParcial_POO_Obregon
             }
         }*/
 
-        /*private void btnEliminarAlumno_Click(object sender, EventArgs e)
+
+
+
+
+
+
+        /*
+        private void btnEliminarAlumno_Click(object sender, EventArgs e)
         {
+            try
+            {
+                universidad.eliminarAlumnoDeUniversidad(dgvAlumno.SelectedRows[0].DataBoundItem as Alumno);
+                agregarAlumnoaDGV(universidad.retornarListaAlumnosUniversidad());
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+
+
             if (dgvAlumno.CurrentRow == null)
             {
                 //VERIFICAR QUE HAYA UN ALUMNO SELECCIONADO
@@ -451,11 +478,10 @@ namespace _1erParcial_POO_Obregon
         }
 
         //AGREGAR A DGV
-        public void agregarAlumnoaDGV(List<Alumno> alumnos)
+        public void agregarListaAlumnoaDGV(List<Alumno> alumnos)
         {
             dgvAlumno.DataSource = null;
-            dgvAlumno.DataSource = vistaAlumno.retornaListaAlumnosVista(alumnos);
-            construirDGVAlumno();
+            dgvAlumno.DataSource = alumnos;
         }
         public void agregarBecaaDGV()
         {
@@ -478,7 +504,8 @@ namespace _1erParcial_POO_Obregon
             if (String.IsNullOrEmpty(txtLegajo.Text) ||
                 String.IsNullOrEmpty(txtNombre.Text) ||
                 String.IsNullOrEmpty(txtApellido.Text) ||
-                String.IsNullOrEmpty(txtDNI.Text))
+                String.IsNullOrEmpty(txtDNI.Text) ||
+                (!rbIngresante.Checked && !rbGrado.Checked && !rbPosgrado.Checked))
             {
                 camposCompletos = false;
             }
@@ -616,11 +643,5 @@ namespace _1erParcial_POO_Obregon
                 return;
             }
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

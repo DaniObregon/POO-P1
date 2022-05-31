@@ -40,7 +40,6 @@
             this.txtDNI = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtLegajo = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.btnAgregarAlumno = new System.Windows.Forms.Button();
             this.btnEliminarAlumno = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -74,7 +73,6 @@
             this.btnEliminarBeca = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.txtValorCuota = new System.Windows.Forms.TextBox();
-            this.nUpDownGrupo = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbPosgrado = new System.Windows.Forms.RadioButton();
             this.rbGrado = new System.Windows.Forms.RadioButton();
@@ -83,7 +81,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBecas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnoSeleccionado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuotasPagas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUpDownGrupo)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +96,6 @@
             this.dgvAlumno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAlumno.Size = new System.Drawing.Size(460, 181);
             this.dgvAlumno.TabIndex = 38;
-            //this.dgvAlumno.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAlumno_CellMouseClick);
             // 
             // label1
             // 
@@ -199,15 +195,6 @@
             this.txtLegajo.TabIndex = 0;
             this.txtLegajo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLegajo_KeyPress);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(522, 263);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 16);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Grupo*";
-            // 
             // btnAgregarAlumno
             // 
             this.btnAgregarAlumno.Location = new System.Drawing.Point(39, 338);
@@ -226,7 +213,6 @@
             this.btnEliminarAlumno.TabIndex = 18;
             this.btnEliminarAlumno.Text = "Eliminar Alumno";
             this.btnEliminarAlumno.UseVisualStyleBackColor = true;
-           //this.btnEliminarAlumno.Click += new System.EventHandler(this.btnEliminarAlumno_Click);
             // 
             // label9
             // 
@@ -275,7 +261,6 @@
             this.btnAsignarBecaAlumno.TabIndex = 26;
             this.btnAsignarBecaAlumno.Text = "Asignar beca";
             this.btnAsignarBecaAlumno.UseVisualStyleBackColor = true;
-            //this.btnAsignarBecaAlumno.Click += new System.EventHandler(this.btnAsignarBeca_Click);
             // 
             // dgvAlumnoSeleccionado
             // 
@@ -340,7 +325,6 @@
             this.btnPagarCuota.TabIndex = 48;
             this.btnPagarCuota.Text = "Pagar cuota";
             this.btnPagarCuota.UseVisualStyleBackColor = true;
-            //this.btnPagarCuota.Click += new System.EventHandler(this.btnPagarCuota_Click);
             // 
             // label13
             // 
@@ -463,7 +447,6 @@
             this.btnModificarAlumno.TabIndex = 67;
             this.btnModificarAlumno.Text = "Modificar Alumno";
             this.btnModificarAlumno.UseVisualStyleBackColor = true;
-            //this.btnModificarAlumno.Click += new System.EventHandler(this.btnModificarAlumno_Click);
             // 
             // btnQuitarBecaAlumno
             // 
@@ -473,7 +456,6 @@
             this.btnQuitarBecaAlumno.TabIndex = 68;
             this.btnQuitarBecaAlumno.Text = "Rescindir beca";
             this.btnQuitarBecaAlumno.UseVisualStyleBackColor = true;
-            //this.btnQuitarBecaAlumno.Click += new System.EventHandler(this.btnQuitarBecaAlumno_Click);
             // 
             // btnEliminarBeca
             // 
@@ -488,7 +470,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(522, 319);
+            this.label20.Location = new System.Drawing.Point(1194, 638);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(77, 16);
             this.label20.TabIndex = 71;
@@ -496,33 +478,11 @@
             // 
             // txtValorCuota
             // 
-            this.txtValorCuota.Location = new System.Drawing.Point(515, 338);
+            this.txtValorCuota.Location = new System.Drawing.Point(1187, 657);
             this.txtValorCuota.Name = "txtValorCuota";
             this.txtValorCuota.Size = new System.Drawing.Size(100, 22);
             this.txtValorCuota.TabIndex = 70;
             this.txtValorCuota.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorCuota_KeyPress);
-            // 
-            // nUpDownGrupo
-            // 
-            this.nUpDownGrupo.Location = new System.Drawing.Point(515, 282);
-            this.nUpDownGrupo.Maximum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.nUpDownGrupo.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nUpDownGrupo.Name = "nUpDownGrupo";
-            this.nUpDownGrupo.Size = new System.Drawing.Size(100, 22);
-            this.nUpDownGrupo.TabIndex = 4;
-            this.nUpDownGrupo.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // groupBox1
             // 
@@ -605,7 +565,6 @@
             this.Controls.Add(this.txtBeneficiario);
             this.Controls.Add(this.btnEliminarAlumno);
             this.Controls.Add(this.btnAgregarAlumno);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtLegajo);
             this.Controls.Add(this.label5);
@@ -613,7 +572,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.nUpDownGrupo);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvBecas);
@@ -621,12 +579,10 @@
             this.Controls.Add(this.dgvAlumno);
             this.Name = "Form1";
             this.Text = "POO-PARCIAL1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumno)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBecas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnoSeleccionado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuotasPagas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUpDownGrupo)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -645,7 +601,6 @@
         private System.Windows.Forms.TextBox txtDNI;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtLegajo;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnAgregarAlumno;
         private System.Windows.Forms.Button btnEliminarAlumno;
         private System.Windows.Forms.Label label9;
@@ -681,7 +636,6 @@
         private System.Windows.Forms.Button btnEliminarBeca;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtValorCuota;
-        private System.Windows.Forms.NumericUpDown nUpDownGrupo;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbPosgrado;
         private System.Windows.Forms.RadioButton rbGrado;
