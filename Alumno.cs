@@ -17,6 +17,7 @@ namespace _1erParcial_POO_Obregon
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string DNI { get; set; }
+        public int Grupo { get; set; }
         
 
         public Alumno()
@@ -25,12 +26,14 @@ namespace _1erParcial_POO_Obregon
             ListaCuotas = new List<Cuota>();
         }
 
-        public Alumno(string legajo, string nombre, string apellido, string dNI) : this()
+        public Alumno(string legajo, string nombre, string apellido, string dNI, int grupo) : this()
         {
             Legajo = legajo;
             Nombre = nombre;
             Apellido = apellido;
             DNI = dNI;
+            Grupo = grupo;
+
         }
 
         public void asignarBeca(Beca beca)

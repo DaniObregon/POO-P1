@@ -77,6 +77,8 @@
             this.rbPosgrado = new System.Windows.Forms.RadioButton();
             this.rbGrado = new System.Windows.Forms.RadioButton();
             this.rbIngresante = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblNumeroGrupo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumno)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBecas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnoSeleccionado)).BeginInit();
@@ -96,6 +98,7 @@
             this.dgvAlumno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAlumno.Size = new System.Drawing.Size(460, 181);
             this.dgvAlumno.TabIndex = 38;
+            this.dgvAlumno.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAlumno_CellMouseClick_1);
             // 
             // label1
             // 
@@ -447,6 +450,7 @@
             this.btnModificarAlumno.TabIndex = 67;
             this.btnModificarAlumno.Text = "Modificar Alumno";
             this.btnModificarAlumno.UseVisualStyleBackColor = true;
+            this.btnModificarAlumno.Click += new System.EventHandler(this.btnModificarAlumno_Click_1);
             // 
             // btnQuitarBecaAlumno
             // 
@@ -506,6 +510,7 @@
             this.rbPosgrado.TabStop = true;
             this.rbPosgrado.Text = "Posgrado";
             this.rbPosgrado.UseVisualStyleBackColor = true;
+            this.rbPosgrado.CheckedChanged += new System.EventHandler(this.rbPosgrado_CheckedChanged);
             // 
             // rbGrado
             // 
@@ -517,6 +522,7 @@
             this.rbGrado.TabStop = true;
             this.rbGrado.Text = "Grado";
             this.rbGrado.UseVisualStyleBackColor = true;
+            this.rbGrado.CheckedChanged += new System.EventHandler(this.rbGrado_CheckedChanged);
             // 
             // rbIngresante
             // 
@@ -528,12 +534,32 @@
             this.rbIngresante.TabStop = true;
             this.rbIngresante.Text = "Ingresante";
             this.rbIngresante.UseVisualStyleBackColor = true;
+            this.rbIngresante.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rbIngresante_MouseClick);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(512, 272);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(47, 16);
+            this.label7.TabIndex = 73;
+            this.label7.Text = "Grupo:";
+            // 
+            // lblNumeroGrupo
+            // 
+            this.lblNumeroGrupo.AutoSize = true;
+            this.lblNumeroGrupo.Location = new System.Drawing.Point(562, 272);
+            this.lblNumeroGrupo.Name = "lblNumeroGrupo";
+            this.lblNumeroGrupo.Size = new System.Drawing.Size(0, 16);
+            this.lblNumeroGrupo.TabIndex = 74;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1333, 745);
+            this.Controls.Add(this.lblNumeroGrupo);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.txtValorCuota);
@@ -579,6 +605,7 @@
             this.Controls.Add(this.dgvAlumno);
             this.Name = "Form1";
             this.Text = "POO-PARCIAL1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumno)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBecas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnoSeleccionado)).EndInit();
@@ -640,6 +667,8 @@
         private System.Windows.Forms.RadioButton rbPosgrado;
         private System.Windows.Forms.RadioButton rbGrado;
         private System.Windows.Forms.RadioButton rbIngresante;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblNumeroGrupo;
     }
 }
 

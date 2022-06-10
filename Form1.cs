@@ -43,11 +43,60 @@ namespace _1erParcial_POO_Obregon
 
         }
 
+        private void dgvAlumno_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //dgvAlumnoSeleccionado.Rows.Clear();
+
+            List<Alumno> listaAlumnosAux = universidad.retornarListaAlumnosUniversidad();
+            Alumno alumno = devuelveAlumnoSeleccionado();
+
+            if (listaAlumnosAux.Count != 0)
+            {
+                if (listaAlumnosAux.Exists(x => x.Legajo == alumno.Legajo))
+                {
+                    txtLegajo.Text = alumno.Legajo;
+                    txtNombre.Text = alumno.Nombre;
+                    txtApellido.Text = alumno.Apellido;
+                    txtDNI.Text = alumno.DNI;
+                    if (alumno is Ingresante)
+                    {
+                        rbIngresante.Checked = true;
+                    }
+                    if (alumno is Grado)
+                    {
+                        rbGrado.Checked = true;
+                    }
+                    if (alumno is Posgrado)
+                    {
+                        rbPosgrado.Checked = true;
+                    }
+                }
+            }
+
+            /*foreach (Alumno alumno in listaAlumnos)
+            {
+                if (dgvAlumno.CurrentRow.Cells[0].Value == alumno.Legajo)
+                {
+                    txtLegajo.Text = alumno.Legajo;
+                    txtNombre.Text = alumno.Nombre;
+                    txtApellido.Text = alumno.Apellido;
+                    txtDNI.Text = alumno.DNI;
+                    nUpDownGrupo.Value = alumno.Grupo;
+
+                    txtBeneficiario.Text = alumno.Apellido;
+
+                    //agregar becas del alumno seleccionado
+                    foreach (Beca beca in alumno.retornaBecasAlumno())
+                    {
+                        dgvAlumnoSeleccionado.Rows.Add(beca.Codigo, beca.Fecha_Otorgamiento, beca.ImporteBeca);
+                    }
+                }
+            }*/
+        }
 
         private void btnAgregarAlumno_Click(object sender, EventArgs e)
         {
-            
-            agregarAlumnoNuevo();
+            agregarAlumnoNuevo();//Hay un camppo global Alumno donde se carga el alumno que se va a agregar
 
             if (alumno != null)
             {
@@ -61,40 +110,6 @@ namespace _1erParcial_POO_Obregon
             return dgvAlumno.SelectedRows[0].DataBoundItem as Alumno;
         }
 
-        /*private void btnModificarAlumno_Click(object sender, EventArgs e)
-        {
-            foreach (Alumno alumno in listaAlumnos)
-            {
-                if (alumno.Legajo == Convert.ToString(this.dgvAlumno.CurrentRow.Cells[0].Value))
-                {//Si alguno de los campos es diferente a loscamposdel alumnoseleccionado
-                    if (alumno.Legajo != txtLegajo.Text ||
-                        alumno.Nombre != txtNombre.Text ||
-                        alumno.Apellido != txtApellido.Text ||
-                        alumno.DNI != txtDNI.Text ||
-                        alumno.Grupo != (int)nUpDownGrupo.Value)
-                    {
-                        if (legajoExistente())
-                        {//Si el legajo existe pero es el mismo legajo
-                            if (alumno.Legajo == txtLegajo.Text)
-                            {
-                                modificarAlumno(alumno);
-                                break;
-                            }
-                            else
-                            {
-                                //legajo existe
-                                MessageBox.Show("Legajo existente en la lista de alumnos.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                        }
-                        else
-                        {
-                            modificarAlumno(alumno);
-                            break;
-                        }
-                    }
-                }
-            }
-        }*/
 
         public Alumno agregarAlumnoNuevo()
         {
@@ -106,13 +121,25 @@ namespace _1erParcial_POO_Obregon
                     {
                         alumno = null;
                         //MessageBox.Show("Legajo existente en la lista de alumnos.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        throw new Exception("Legajo existente en la lista de alumnos." );
+                        throw new Exception("Legajo existente en la lista de alumnos.");
                     }
                     else
                     {
-                        if (rbIngresante.Checked) alumno = new Ingresante();
-                        if (rbGrado.Checked) alumno = new Grado();
-                        if (rbPosgrado.Checked) alumno = new Posgrado();
+                        if (rbIngresante.Checked)
+                        {
+                            alumno = new Ingresante();
+                            alumno.Grupo = 1;
+                        }
+                        if (rbGrado.Checked)
+                        {
+                            alumno = new Grado();
+                            alumno.Grupo = 2;
+                        }
+                        if (rbPosgrado.Checked)
+                        {
+                            alumno = new Posgrado();
+                            alumno.Grupo = 3;
+                        }
 
                         alumno.Legajo = txtLegajo.Text;
                         alumno.Nombre = txtNombre.Text;
@@ -134,22 +161,7 @@ namespace _1erParcial_POO_Obregon
             return alumno;
         }
 
-        /*public void modificarAlumno(Alumno alumno)
-        {
-            DialogResult result = MessageBox.Show("Realmente desea modificar el alumno seleccionado?",
-                                "titulo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                alumno.Legajo = txtLegajo.Text;
-                alumno.Nombre = txtNombre.Text;
-                alumno.Apellido = txtApellido.Text;
-                alumno.DNI = txtDNI.Text;
-                alumno.Grupo = (int)nUpDownGrupo.Value;
-
-                agregarAlumnoaDGV();
-            }
-        }*/
+        
 
 
 
@@ -406,30 +418,23 @@ namespace _1erParcial_POO_Obregon
             }
         }*/
 
-        /*private void dgvAlumno_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //DEVUELVE GRUPO ALUMNO
+        public int devuelveGrupo()
         {
-            dgvAlumnoSeleccionado.Rows.Clear();
-
-            foreach (Alumno alumno in listaAlumnos)
+            if (rbIngresante.Checked)
             {
-                if (dgvAlumno.CurrentRow.Cells[0].Value == alumno.Legajo)
-                {
-                    txtLegajo.Text = alumno.Legajo;
-                    txtNombre.Text = alumno.Nombre;
-                    txtApellido.Text = alumno.Apellido;
-                    txtDNI.Text = alumno.DNI;
-                    nUpDownGrupo.Value = alumno.Grupo;
-
-                    txtBeneficiario.Text = alumno.Apellido;
-
-                    //agregar becas del alumno seleccionado
-                    foreach (Beca beca in alumno.retornaBecasAlumno())
-                    {
-                        dgvAlumnoSeleccionado.Rows.Add(beca.Codigo, beca.Fecha_Otorgamiento, beca.ImporteBeca);
-                    }
-                }
+                return 1;
             }
-        }*/
+            if (rbGrado.Checked)
+            {
+                return 2;
+            }
+            if (rbPosgrado.Checked)
+            {
+                return 3;
+            }
+            else return 0;
+        }
 
         //CONSTRUCCION DE DGV
         private void construirDGVAlumno()
@@ -542,8 +547,8 @@ namespace _1erParcial_POO_Obregon
             bool legajoExistente = false;
 
             List<Alumno> listaAlumnosAux = universidad.retornarListaAlumnosUniversidad();
-            
-            if(listaAlumnosAux.Count != 0)
+
+            if (listaAlumnosAux.Count != 0)
             {
                 if (listaAlumnosAux.Exists(x => x.Legajo == txtLegajo.Text))
                 {
@@ -642,6 +647,64 @@ namespace _1erParcial_POO_Obregon
                 e.Handled = true;
                 return;
             }
+        }
+
+        private void rbIngresante_MouseClick(object sender, MouseEventArgs e)
+        {
+            lblNumeroGrupo.Text = "1";
+        }
+
+        private void rbGrado_CheckedChanged(object sender, EventArgs e)
+        {
+            lblNumeroGrupo.Text = "2";
+        }
+
+        private void rbPosgrado_CheckedChanged(object sender, EventArgs e)
+        {
+            lblNumeroGrupo.Text = "3";
+        }
+
+        public void modificarAlumno(Alumno alumnoSeleccionado)
+        {
+            DialogResult result = MessageBox.Show("Realmente desea modificar el alumno seleccionado?",
+                                "titulo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                alumnoSeleccionado.Legajo = txtLegajo.Text;
+                alumnoSeleccionado.Nombre = txtNombre.Text;
+                alumnoSeleccionado.Apellido = txtApellido.Text;
+                alumnoSeleccionado.DNI = txtDNI.Text;
+                alumnoSeleccionado.Grupo = Convert.ToInt32(lblNumeroGrupo.Text);
+
+                universidad.modificarAlumno(alumnoSeleccionado);
+                agregarListaAlumnoaDGV(universidad.retornarListaAlumnosUniversidad());
+            }
+        }
+
+        private void btnModificarAlumno_Click_1(object sender, EventArgs e)
+        {
+            List<Alumno> listaAlumnosAux = universidad.retornarListaAlumnosUniversidad();
+            Alumno alumnoSeleccionado = devuelveAlumnoSeleccionado();
+
+            if (listaAlumnosAux.Count != 0)
+            {
+                if (listaAlumnosAux.Exists(x => x.Legajo == alumnoSeleccionado.Legajo))
+                {
+                    if (alumnoSeleccionado.Legajo != txtLegajo.Text ||
+                        alumnoSeleccionado.Nombre != txtNombre.Text ||
+                        alumnoSeleccionado.Apellido != txtApellido.Text ||
+                        alumnoSeleccionado.DNI != txtDNI.Text ||
+                        alumnoSeleccionado.Grupo.ToString() != lblNumeroGrupo.Text)
+                    {
+                        modificarAlumno(alumnoSeleccionado);
+                    }
+                }
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
         }
     }
 }

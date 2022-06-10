@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace _1erParcial_POO_Obregon
 {
     public class Universidad
     {
-        List<Alumno> listaAlumnos;
-        List<Beca> listaBecas;
+        public List<Beca> listaBecas { get; set; }
+        public List<Alumno> listaAlumnos { get; set; }
 
         public Universidad()
         {
@@ -20,6 +21,22 @@ namespace _1erParcial_POO_Obregon
         public void agregarAlumnoAUniversidad(Alumno alumno)
         {
             listaAlumnos.Add(alumno);
+        }
+
+        public void modificarAlumno(Alumno alumnoSeleccionado)
+        {
+            foreach (Alumno alumno in listaAlumnos)
+            {
+                if (alumno.Legajo == alumnoSeleccionado.Legajo)
+                {
+                    alumno.Legajo = alumnoSeleccionado.Legajo;
+                    alumno.Nombre = alumnoSeleccionado.Nombre;
+                    alumno.Apellido = alumnoSeleccionado.Apellido;
+                    alumno.DNI = alumnoSeleccionado.DNI;
+                    alumno.Grupo = alumnoSeleccionado.Grupo;
+                    break;
+                }
+            }
         }
 
         public void agregarBeca(Beca beca)

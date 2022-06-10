@@ -13,7 +13,7 @@ namespace _1erParcial_POO_Obregon
             AsociarBeneficio();
         }
 
-        public Grado(string legajo, string nombre, string apellido, string dNI, double valorCuota) : base(legajo, nombre, apellido, dNI)
+        public Grado(string legajo, string nombre, string apellido, string dNI, double valorCuota, int grupo) : base(legajo, nombre, apellido, dNI, grupo)
         {
             AsociarBeneficio();
         }
