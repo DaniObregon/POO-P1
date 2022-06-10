@@ -15,7 +15,6 @@ namespace _1erParcial_POO_Obregon
     public partial class Form1 : Form
     {
 
-        //List<Alumno> listaAlumnos;
         List<Cuota> listaCuotas;
         List<Beca> listaBecas;
 
@@ -160,14 +159,6 @@ namespace _1erParcial_POO_Obregon
             }
             return alumno;
         }
-
-        
-
-
-
-
-
-
 
         /*
         private void btnEliminarAlumno_Click(object sender, EventArgs e)
@@ -705,6 +696,18 @@ namespace _1erParcial_POO_Obregon
 
         private void Form1_Load(object sender, EventArgs e)
         {
+        }
+
+        private void btnEliminarAlumno_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Realmente desea eliminar el alumno seleccionado?",
+                                "titulo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                universidad.eliminarAlumnoDeUniversidad(devuelveAlumnoSeleccionado());
+                agregarListaAlumnoaDGV(universidad.retornarListaAlumnosUniversidad());
+            }
         }
     }
 }

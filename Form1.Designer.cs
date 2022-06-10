@@ -216,6 +216,7 @@
             this.btnEliminarAlumno.TabIndex = 18;
             this.btnEliminarAlumno.Text = "Eliminar Alumno";
             this.btnEliminarAlumno.UseVisualStyleBackColor = true;
+            this.btnEliminarAlumno.Click += new System.EventHandler(this.btnEliminarAlumno_Click);
             // 
             // label9
             // 

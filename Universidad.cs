@@ -9,8 +9,8 @@ namespace _1erParcial_POO_Obregon
 {
     public class Universidad
     {
-        public List<Beca> listaBecas { get; set; }
-        public List<Alumno> listaAlumnos { get; set; }
+        public List<Beca> listaBecas;
+        public List<Alumno> listaAlumnos;
 
         public Universidad()
         {
